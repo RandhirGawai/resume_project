@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blog Page</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Include jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        /* Custom styles for the page */
+        /* Your CSS styles here */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="blog-container">
+            <h2 class="blog-title">Write Your Blog</h2>
+            <form class="blog-form" method="post">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="blogTitle" placeholder="Blog Title" required>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" name="blogContent" rows="4" placeholder="Write your blog here" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Publish Blog</button>
+            </form>
+        </div>
+
+        <div class="blog-list">
+            <h2 class="blog-title">Recent Blogs</h2>
+            <div id="blogList">
+                <!-- Blogs will be displayed here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Load blogs from Flask route on page load
+        document.addEventListener("DOMContentLoaded", function() {
+            loadBlogs();
+        });
+    
+        function loadBlogs() {
+            $.ajax({
+                type: "GET",
+                url: "/blogs",
+                success: function(blogs) {
+                    displayBlogs(blogs);
+                },
+                error: function(error) {
+                    console.error("Error loading blogs:", error);
+                }
+            });
+        }
+    
+        function displayBlogs(blogs) {
+    var blogList = document.getElementById("blogList");
+    blogList.innerHTML = "";  // Clear existing blog list
+
+    for (var i = 0; i < blogs.length; i++) {
+        if (blogs[i].title && blogs[i].content) {
+            var blogItem = document.createElement("div");
+            blogItem.className = "blog-item";
+
+            var blogTimestamp = document.createElement("p");
+            blogTimestamp.innerHTML = "<strong>Timestamp:</strong> " + blogs[i].timestamp;
+
+            var blogTitle = document.createElement("h4");
+            blogTitle.innerHTML = "<strong>Title:</strong> " + blogs[i].title;
+
+            var blogContent = document.createElement("p");
+            blogContent.innerHTML = "<strong>Content:</strong> " + blogs[i].content;
+
+            blogItem.appendChild(blogTimestamp);
+            blogItem.appendChild(blogTitle);
+            blogItem.appendChild(blogContent);
+
+            blogList.appendChild(blogItem);
+        }
+    }
+}
+
+    </script>
+    
+    
+</body>
+</html>

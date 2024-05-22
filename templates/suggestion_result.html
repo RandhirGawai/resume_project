@@ -1,0 +1,82 @@
+<!-- SUGGESTION_result.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill-based Company Suggestion Results</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .company-table {
+            margin-top: 20px;
+        }
+
+        .skill-jd-table {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-4">
+        <h3>Suggestion Results:</h3>
+        {% for company in suggested_companies %}
+            <div class="company-table">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Company</th>
+                            <th>Post</th>
+                            <th>Experience</th>
+                            <th>Location</th>
+                            <th>Openings</th>
+                            <th>Applicants</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ company['Company'] }}</td>
+                            <td>{{ company['Post'] }}</td>
+                            <td>{{ company['Experience'] }}</td>
+                            <td>{{ company['Location'] }}</td>
+                            <td>{{ company['Openings'] }}</td>
+                            <td>{{ company['Applicants'] }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="skill-jd-table">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Skill</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ company['Skill'] }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table class="table table-bordered mt-2">
+                    <thead>
+                        <tr>
+                            <th>Job Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ company['JD'] }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+
+</html>

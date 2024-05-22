@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resume Analysis Results</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Your custom CSS styles here */
+        body {
+            background-color: #f4f4f4;
+        }
+        .result-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="mt-4">Analysis Results:</h2>
+        <div id="analysisResults">
+            <!-- Analysis results will be displayed here -->
+            {% for result in analysis_result %}
+            <div class="result-card">
+                <h5><strong>Company:</strong> {{ result['Company'] }}</h5>
+                <p><strong>Post:</strong> {{ result['Post'] }}</p>
+                <p><strong>Experience:</strong> {{ result['Experience'] }}</p>
+                <p><strong>Location:</strong> {{ result['Location'] }}</p>
+                <p><strong>Openings:</strong> {{ result['Applicants'] }}</p>
+                <p><strong>Applicants:</strong> {{ result['Location'] }}</p>
+                <p><strong>Skill:</strong> {{ result['Skill'] }}</p>
+                <p><strong>Job Description:</strong> {{ result['JD'] }}</p>
+                <p><strong>Resume Rating:</strong> {{ result['Resume Rating'] }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <button onclick="goBack()" class="btn btn-primary mt-3">Go Back</button>
+
+    <script>
+        function goBack() {
+            window.location = "/"; // Navigate back to the initial window
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
