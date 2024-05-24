@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Topic Listing Bootstrap 5 Template</title>
+
+    <!-- CSS FILES -->        
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Update the font link -->
+    <link href="{{ url_for('static', filename='css/fonts.css') }}" rel="stylesheet">
+
+    <!-- Bootstrap CSS from CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons CSS from CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.17.0/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Your Custom CSS -->
+    <link href="{{ url_for('static', filename='css/templatemo-topic-listing.css') }}" rel="stylesheet">
+
+</head>
+
+<body id="top">
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('index') }}" style="font-size: 20px;">
+                <i class="bi-back"></i>
+                <span>Chal Dekhate Hai</span>
+            </a>
+
+            
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+
+
+         
+                <ul class="navbar-nav ms-lg-5 me-lg-auto">
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href="#homeSection">Home</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href="#resumeAnalyzerSection">Resume Analyzer</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href="#homeSection">Skill Match</a>
+                    </li>
+
+                 
+                    <li class="nav-item">
+                        <a class="nav-link" href="/blog">Blog</a>
+                    </li>
+              
+                
+                    <li class="nav-item">
+                        <a href="/login" class="nav-link">Logout</a>
+                        
+                    </li>
+                </ul>
+                
+            </div>
+        </div>
+    </nav>
+        <section class="hero-section d-flex justify-content-center align-items-center" id="homeSection">
+            <div class="container">
+                <!-- Content for the Home section -->
+                <div class="row">
+                    <div class="col-lg-8 col-12 mx-auto" id="section_search">
+                        <h3 class="text-white text-center">Discover. Learn. Enjoy.</h3>
+                        <h6 class="text-center">platform for creatives around the world</h6>
+                        <form method="POST" action="/SUGGESTION" class="custom-form mt-4 pt-2 mb-lg-0 mb-5" role="search">
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-text bi-search" id="basic-addon1"></span>
+                                <input name="field" type="search" class="form-control" id="keyword" placeholder="Data Science, Salesforce, Mobile App Development, Finance ..." aria-label="Search">
+                                <button type="submit" class="form-control">Search</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="featured-section" id="resumeAnalyzerSection">
+            <div class="container">
+                <!-- Content for the Resume Analyzer section -->
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 col-12 mb-4 mb-lg-0">
+                        <div class="custom-block bg-white shadow-lg">
+                            <div class="d-flex">
+                                <div>
+                                    <h5 class="text-black mb-2">Resume Analyzer</h5>
+                                    <form method="POST" action="/resume_analyses_result" enctype="multipart/form-data" id="resumeForm">
+                                        <div class="form-group">
+                                            <input type="file" class="form-control-file" name="resume" accept=".pdf" required>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary btn-sm">Analyze</button>
+                                    </form>
+                                </div>
+                                <span class="badge bg-design rounded-pill ms-auto">14</span>
+                            </div>
+                            <a href="/topics_detail">
+                                <img src="/static/images/topics/undraw_Remote_design_team_re_urdx.png" class="custom-block-image img-fluid" alt="">
+                            </a>
+                        </div>
+                    </div>                    <div class="col-lg-6 col-12" id="section_2">
+                        <div class="custom-block custom-block-overlay">
+                            <div class="d-flex flex-column h-100">
+                                <img src="{{ url_for('static', filename='images/businesswoman-using-tablet-analysis.jpg') }}" class="custom-block-image img-fluid" alt="">
+                                <div class="custom-block-overlay-text d-flex">
+                                    <div>
+                                        <h5 class="text-white mb-2">Description</h5>
+                                        <p class="text-white">"At this platform, you have the opportunity to upload your resume in PDF format. Based on the content of your resume, we generate a personalized resume score and match it with relevant job opportunities."</p>
+                                       
+                                    </div>
+                                    <span class="badge bg-finance rounded-pill ms-auto">25</span>
+                                </div>
+                                <div class="social-share d-flex">
+                                    <p class="text-white me-4">Share:</p>
+                                    <ul class="social-icon">
+                                        <li class="social-icon-item">
+                                            <a href="#" class="social-icon-link bi-twitter"></a>
+                                        </li>
+                                        <li class="social-icon-item">
+                                            <a href="#" class="social-icon-link bi-facebook"></a>
+                                        </li>
+                                        <li class="social-icon-item">
+                                            <a href="#" class="social-icon-link bi-pinterest"></a>
+                                        </li>
+                                    </ul>
+                                    <a href="#" class="custom-icon bi-bookmark ms-auto"></a>
+                                </div>
+                                <div class="section-overlay"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="explore-section section-padding" id="section_domain" >
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h2 class="mb-4">Top Domains</h1>
+                    </div>
+                </div>
+            </div>
+        
+
+            <div class="container-fluid">
+                <div class="row">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" id="design-tab" href="{{ url_for('show_data_science') }}" role="tab" aria-controls="design-tab-pane" aria-selected="true">Data Science</a>
+                        </li>
+            
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="marketing-tab" href="{{ url_for('show_salesforce') }}" role="tab" aria-controls="marketing-tab-pane" aria-selected="false">Salesforce</a>
+                        </li>
+            
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="finance-tab" href="{{ url_for('show_fullstack_web') }}" role="tab" aria-controls="finance-tab-pane" aria-selected="false">Fullstack Web Development</a>
+                        </li>
+            
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="music-tab" href="{{ url_for('show_sql_database') }}" role="tab" aria-controls="music-tab-pane" aria-selected="false">SQL Database</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+                            
+                        </ul>
+                    </div>
+                </div>
+
+              
+            <section class="faq-section section-padding" id="section_4">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-12">
+                            <h2 class="mb-4">Frequently Asked Questions</h2>
+                        </div>
+            
+                        <div class="clearfix"></div>
+            
+                        <div class="col-lg-5 col-12">
+                            <img src="{{ url_for('static', filename='images/faq_graphic.jpg') }}" class="img-fluid" alt="FAQs">
+                        </div>
+            
+                        <div class="col-lg-6 col-12 m-auto">
+                            <div class="accordion" id="accordionExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            What is Topic Listing?
+                                        </button>
+                                    </h2>
+            
+                                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            Topic Listing is a free Bootstrap 5 CSS template. <strong>You are not allowed to redistribute this template</strong> on any other template collection website without our permission. Please contact TemplateMo for more detail. Thank you.
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingTwo">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            What is Chal Dekhate Hai?
+                                        </button>
+                                    </h2>
+            
+                                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            Chal Dekhate Hai is a comprehensive platform that provides various services related to job searching, resume analysis, skill matching, and blogging. Users can explore job openings, analyze their resumes, find matching job details based on their interests, read and write blogs, and more.
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingThree">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                            How can I search for job openings on Chal Dekhate Hai?
+                                        </button>
+                                    </h2>
+            
+                                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            To search for job openings, simply use the search bar on the home page. Enter relevant keywords such as job titles, skills, or industries you're interested in, and our platform will display matching job opportunities for you.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingThree">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                            How does the resume analysis feature work?
+                                        </button>
+                                    </h2>
+            
+                                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            Our resume analysis feature allows you to upload your resume in PDF format. Once uploaded, our system analyzes the content and generates a personalized resume score. This score helps you understand how well your resume aligns with industry standards and provides suggestions for improvement.
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingThree">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                            Is it possible to read and write blogs on Chal Dekhate Hai?
+                                        </button>
+                                    </h2>
+            
+                                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            Yes, Chal Dekhate Hai offers a blogging platform where users can both read and write blogs. Share your experiences, insights, or industry knowledge with the community. Additionally, explore blogs written by other users to gain valuable information.
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="contact-section section-padding section-bg" id="section_5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-12 text-center">
+                            <h2 class="mb-5">Get in touch</h2>
+                        </div>
+        
+                        <div class="col-lg-5 col-12 mb-4 mb-lg-0">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5465.3038864120135!2d77.76774334690609!3d20.910835506162066!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd6a4eb01181b85%3A0x7dc40a0d56341535!2sAmar%20Colony%20Rd%2C%20Kaloti%20Nagar%2C%20Kanwar%20Nagar%2C%20Guruchhaya%20Colony%2C%20Dastur%20Nagar%2C%20Amravati%2C%20Maharashtra%20444605!5e0!3m2!1sen!2sin!4v1706079413779!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+        
+                        <div class="col-lg-3 col-md-6 col-12 mb-3 mb-lg- mb-md-0 ms-auto">
+                            <h4 class="mb-3">Head office</h4>
+                            <p>Amar colony, Amravati, Maharashtra, India</p>
+                            <hr>
+                            <p class="d-flex align-items-center mb-1">
+                                <span class="me-2">Phone</span>
+                                <a href="tel:8788061974" class="site-footer-link">8788061974</a>
+                            </p>
+                            <p class="d-flex align-items-center">
+                                <span class="me-2">Email</span>
+                                <a href="mailto:randhirgawai@yahoo.com" class="site-footer-link">randhirgawai@yahoo.com</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+            <footer class="site-footer section-padding">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 col-6">
+                            <h6 class="site-footer-title mb-3">Resources</h6>
+                            <ul class="site-footer-links">
+                                <li class="site-footer-link-item">
+                                    <a href="#" class="site-footer-link">Home</a>
+                                </li>
+                                <li class="site-footer-link-item">
+                                    <a href="#" class="site-footer-link"> Resume Analyzer</a>
+                                </li>
+                                <li class="site-footer-link-item">
+                                    <a href="#" class="site-footer-link">FAQs</a>
+                                </li>
+                                <li class="site-footer-link-item">
+                                    <a href="#" class="site-footer-link">Contact</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-6 mb-4 mb-lg-0">
+                            <h6 class="site-footer-title mb-3">Information</h6>
+                            <p class="text-white d-flex mb-1">
+                                <a href="tel:8788061974" class="site-footer-link">8788061974</a>
+                            </p>
+                            <p class="text-white d-flex">
+                                <a href="mailto:randhirgawai@yahoo.com" class="site-footer-link">randhirgawai@yahoo.com</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        
+            <!-- JAVASCRIPT FILES -->
+            <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+            <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+            <script src="{{ url_for('static', filename='js/jquery.sticky.js') }}"></script>
+            <script src="{{ url_for('static', filename='js/click-scroll.js') }}"></script>
+            <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
+            
+            <script>
+                function onLinkClick(id) {
+                    document.getElementsById.scrollIntoView(id);
+                    // will scroll to 4th h3 element
+                    }
+            </script>
+        
+        </body>
+        </html>

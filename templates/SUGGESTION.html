@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Skill-based Company Suggestion</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Include Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        /* Custom styles for the page */
+        body {
+            background-color: #f5f5f5;
+        }
+
+        /* Styling for the "Company Suggestion" window */
+        #suggestionWindow {
+            background-image: url('iamges/18.jpg'); /* Add the path to your background image */
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            margin: 20px auto;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        /* Styling for the loading and processing messages */
+        .loading-processing-message {
+            background-color: rgba(255, 255, 255, 0.9);
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            color: #000;
+        }
+
+        .loading-processing-message p {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        /* Styling for the suggestion results */
+        .suggestion-results {
+            background-color: #fff;
+            display: none;
+            margin-top: 20px;
+        }
+
+        .result-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Header and Footer Styles */
+        .site-header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-menu li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .nav-menu a:hover {
+            text-decoration: underline;
+        }
+
+        .site-footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .footer-widgets-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-widget {
+            flex: 1;
+            margin: 10px;
+        }
+
+        .footer-widget i {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="site-header">
+        <div class="header-content">
+            <div class="logo">Your Logo</div>
+            <ul class="nav-menu">
+                <li><a href="c:/Users/pc/Desktop/landing page/homepage.html">About Us</a></li>
+                <li><a href="c:/Users/pc/Desktop/landing page/RESUME_ANALYZER.html">Resume Analyzer</a></li>
+                <li><a href="#skill-matching">Skill-Based Job Matching</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#resume-templates">Resume Templates</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Middle Section (with background image) -->
+    <div id="suggestionWindow">
+        <h2 class="submit-header">Company Suggestion</h2>
+        <form method="POST" action="/SUGGESTION" id="skillForm">
+            <div class="form-group">
+                <label for="field">Enter your skill:</label>
+                <input type="text" class="form-control" name="field" id="field" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Suggest Companies</button>
+        </form>
+    </div>
+
+    <!-- Loading and processing messages -->
+    <div class="loading-processing-message" id="loadingMessage">
+        <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <p class="mt-2">Loading data. Please wait...</p>
+    </div>
+
+    <div class="container suggestion-results">
+        <h3 class="mt-4">Suggestion Results:</h3>
+        <div id="results">
+            <!-- Suggestion results will be displayed here -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="site-footer">
+            <div class="footer-widgets-container grid-container">
+                <div class="footer-widget">
+                    <a href="tel:8788061974"><i class="fas fa-phone-alt"></i> 8788061974</a>
+                    <a href="mailto:randhirgawai@yahoo.com"><i class="fas fa-envelope"></i> randhirgawai@yahoo.com</a>
+                    <p><i class="fas fa-map-marker-alt"></i> Amravati, Maharashtra</p>
+                </div>
+                <div class="footer-widget">
+                    <a href="demo">SERVICES</a>
+                    <a href="demo">ABOUT US</a>
+                    <a href="demo">CONTACT</a>
+                    <!-- Add more links as needed -->
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Include jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+    // Handle form submission
+    $('#skillForm').submit(function(e) {
+        e.preventDefault();
+
+        $('#suggestionWindow').hide();
+        $('#loadingMessage').show();
+
+        var formData = $(this).serialize();
+
+        $.ajax({
+            type: 'POST',
+            url: '/SUGGESTION_result',
+            data: formData,
+            success: function (data) {
+                $('#loadingMessage').hide();
+                $('.suggestion-results').show();
+                
+                // Clear existing results before appending new ones
+                $('#results').empty();
+
+                // Display the suggestion results in the 'results' div
+                for (var i = 0; i < data.length; i++) {
+                    var cardHtml = '<div class="result-card">' +
+                        '<h5><strong>Company:</strong> ' + data[i]['Company'] + '</h5>' +
+                        '<p><strong>Post:</strong> ' + data[i]['Post'] + '</p>' +
+                        '<p><strong>Experience:</strong> ' + data[i]['Experience'] + '</p>' +
+                        '<p><strong>Location:</strong> ' + data[i]['Location'] + '</p>' +
+
+
+
+                        '<p><strong>Openings:</strong> ' + data[i]['Openings'] + '</p>' +
+                        '<p><strong>Applicants:</strong> ' + data[i]['Applicants'] + '</p>' +
+                        '<p><strong>Skill:</strong> ' + data[i]['Skill'] + '</p>' +
+                        '<p><strong>Job Description:</strong> ' + data[i]['JD'] + '</p>' +
+
+                    '</div>';
+                    $('#results').append(cardHtml);
+                }
+            }
+        });
+    });
+});
+    </script>
+</body>
+
+</html>
